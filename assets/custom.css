@@ -1,0 +1,422 @@
+/*==========*/
+.body {
+    position: relative;
+    color: #0c2133;
+}
+.container {
+    width: 100%;
+}
+.form-control {
+    border-color: #0a91ab;
+    border-radius: 20px !important;
+}
+.form-control:hover, .form-control:focus, .form-control:active {
+    border-color: #065471;
+}
+.logo {
+    width: 100px;
+    height: auto;
+    margin: 0 auto;
+    display: block;
+}
+.small-logo {
+    width: 100px;
+    margin-top: 10px;
+}
+.btn_default {
+    border-radius: 20px; 
+    padding: 5px 20px;
+    background-color: #065471;
+    color: #0a91ab;
+}
+.btn_default:hover{
+    background-color: #065471;
+    color: #fff;
+}
+.btn_default:focus {
+    color: #0a91ab;
+}
+.btn:active:focus, .btn:focus {
+    outline: none;
+}
+.btn:hover {
+    color: #fff;
+}
+.btn:focus {
+    color: #d7ddde;
+}
+
+a {
+    color: #0a91ab;
+    cursor: pointer;
+}
+a:hover {
+    text-decoration: none;
+}
+hr {
+    margin: 10px 0;
+}
+.btn_circle {
+    border-radius: 20px;
+    width: 100px;
+    vertical-align: top;
+    margin-right: 10px;
+}
+.loading {
+    background: url("images/loading.gif") transparent no-repeat center center;
+    background-size: contain;
+    margin: 0 auto;
+    display: none;
+}
+.topic_loading {
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    top: 4px;
+    left: 5px;
+}
+
+.voc_loading {
+    width: 25px;
+    height: 25px;
+    vertical-align: top;
+}
+.msgTxt {
+    border: 1px solid #fff;
+    border-radius: 20px;
+    padding: 7px 0;
+    background-color: #fff;
+    font-size: 12px;
+}
+.msg_error {
+    border-color: #e8c7c7;
+    background-color: #f7e5e5;
+}
+.msg_success {
+    border-color: #b8d0bb;
+    background-color: #ebf7e5;
+}
+::-webkit-scrollbar {
+    width: 5px;
+}
+ 
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+    border-radius: 5px;
+}
+ 
+::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+}
+.modal-content {
+    border-radius: 0;
+}
+.modal-header {
+    text-align: center;
+    background-color: #cad4d8;
+}
+ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+/*==========*/
+/*==========*/
+
+
+
+/*login*/
+.login_container {
+    margin-top: 100px;
+    position: relative;
+    overflow-x: hidden;
+}
+.login_content .input-group, .register_content .input-group {
+    margin: 20px auto;
+    width: 280px;
+}
+.register_content, .login_content {
+    margin-top: 35px;
+}
+.new_account_link, .sign_in_link {
+    display: block;
+    margin-top: 20px;
+}
+/*===========*/
+/*===========*/
+
+/*left_side*/
+.left_side {
+    background-color: #fff;
+    min-height: 200px;
+    padding: 0;
+}
+.menu_title {
+    position: relative;
+    margin-top: 15px;
+    background: #f7f7f7;
+    background: -moz-linear-gradient(#f7f7f7 0%, #ececec 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #f7f7f7), color-stop(100%, #ececec));
+    background: -webkit-linear-gradient(#f7f7f7 0%, #ececec 100%);
+    background: linear-gradient(#f7f7f7 0%, #ececec 100%);
+    text-align: center;
+}
+.menu_title p {
+    color: #b5b5b5;
+    line-height: 32px;
+    margin-bottom: 0;
+}
+.a_title {
+    position: absolute;
+    display: block;
+    top: 0;
+    right: 7px;
+    font-size: 25px;
+    color: #b6b5be;
+}
+.topic_list {
+    max-height: 360px;
+    min-height: 360px;
+    overflow-y: hidden;
+}
+.topic_list:hover {
+    overflow-y: auto;
+}
+.list a {
+    text-align: center;
+    display: block;
+    border-bottom: 1px solid #eee;
+    /* line-height: 40px; */
+    background-color: #fdfdfd;
+    color: #0a91ab;
+    -webkit-transition: background-color 0.3s; /* Safari */
+    transition: background-color 0.3s;
+    padding: 10px 0;
+}
+.list .badge {
+    background-color: #cacaca;
+}
+
+.list a:hover, .list a:active, .list a:focus {
+    background-color: #0a91ab !important;
+    color: #fff !important;
+    text-decoration: none;
+}
+
+/*===========*/
+/*===========*/
+.right_side {
+    padding-left: 50px;
+}
+.tool_bar {
+    margin-top: 32px;
+}
+.right_side .input_trans{
+    padding: 0px 1px;
+}
+.right_side .form-control{
+    border-radius: 3px !important;
+    height: 32px;
+    border-color: #ccc;
+}
+p.topic_title {
+    font-size: 20px;
+    display: inline-block;
+    margin-bottom: 0;
+}
+.topic_title span {
+    background-color: #eee;
+    margin: 0 10px;
+    padding: 1px 5px;
+    border-radius: 5px;
+}
+.topic_title span a {
+    margin: 5px;
+}
+.voc_list {
+    padding-left: 18px;
+    margin-top: 30px;
+}
+span.voc_control {
+    background-color: #eee;
+    margin: 0 10px;
+    padding: 1px 5px;
+    border-radius: 5px;
+    font-size: 18px;
+}
+span.voc_control a {
+    margin: 5px;
+}
+.voc_row p {
+    display:inline-block;
+    font-size: 16px;
+}
+.voc_row .stt {
+    font-size: 10px;
+}
+.voc_row p.voc_new {
+    font-size: 25px;
+    margin-left: 10px;
+}
+.voc_row p.voc_pron {
+    margin-left: 20px;  
+}
+.voc_row p.voc_type {    
+    color: #8ba03f;
+    margin-left: 20px;
+}
+.voc_row p.voc_mean {
+    margin-left: 20px;
+}
+.filter_bar {
+    margin-top: 10px;
+    padding-left: 1px;
+}
+.filter_bar a {
+    margin: 0 5px;
+}
+input.search_input {
+    width: 155px;
+    background-color: #fff6c7;
+    display: inline-block;
+}
+.translate_bar {
+    position: relative;
+}
+
+.translate_bar .form-control {
+    height: 74px;
+    font-size: 20px;
+}
+.del_voc {
+    font-size: 18px;
+    margin-left: 10px;
+}
+.btn_add_voc {
+    width: 100%;
+    border-radius: 4px;
+    margin-top: 42px;
+}
+.word_result {
+    position: absolute;
+    width: 100%;
+}
+.eng_voc {
+    width: 275px;
+    border: 1px solid #eee;
+    background-color: #fff;
+    -webkit-box-shadow: -4px 5px 11px -4px rgba(0,0,0,0.75);
+    -moz-box-shadow: -4px 5px 11px -4px rgba(0,0,0,0.75);
+    box-shadow: -4px 5px 11px -4px rgba(0,0,0,0.75);
+    display: none;
+}
+.vi_voc {
+    width: 729px;
+    border: 1px solid #eee;
+    background-color: #fff;
+    margin-left: 2px;
+    padding-bottom: 10px;
+    -webkit-box-shadow: 4px 5px 11px -4px rgba(0,0,0,0.75);
+    -moz-box-shadow: 4px 5px 11px -4px rgba(0,0,0,0.75);
+    box-shadow: 4px 5px 11px -4px rgba(0,0,0,0.75);
+    display: none;
+}
+.eng_voc a {
+    display: block;
+    margin: 5px 0;
+    font-size: 16px;
+}
+.vi_voc > i {
+    display: block;
+    background-color: #eee;
+    margin: 0 -15px;
+    padding: 5px 15px;
+}
+.vi_voc ul li b > i {
+    font-style: normal !important;
+}
+.vi_voc ul ul {
+    padding-left: 20px! important;
+}
+.vi_voc font {
+    color: #0a91ab !important;
+    padding: 2px 5px;
+    cursor: pointer;
+    border: 1px solid transparent;
+}
+.vi_voc b {
+    font-weight: 500!important;
+}
+.vi_voc font:hover {
+    background-color: #f1f1f1;
+    border-radius: 4px;
+    border: 1px solid #c3d1d2;
+}
+.eng_key {
+    border-color: #0a91ab !important;
+}
+.invaild_trans {
+    background-color: #fffedd;
+}
+.i_add_topic, .i_down_topic, .i_update_topic {
+    font-size: 16px;
+    width: 60%;
+    margin: 10px auto;
+}
+
+.a_download_topic {
+    margin-top: 20px;
+    display: block;
+}
+.topic_title b {
+    font-weight: 500;
+} 
+.wel_title {
+    font-size: 20px;
+    margin-top: 25px;
+    display: none;
+}
+.wel_title b {
+
+    font-size: 50px;
+    color: #065471;
+}
+.wel_b {
+    display: none;
+    font-size: 18px;
+    margin: 20px 60px;
+}
+.wel_b b {
+    border: 1px solid #0a91ab;
+    width: 50px;
+    height: 50px;
+    display: inline-block;
+    text-align: center;
+    border-radius: 50%;
+    color: #0a91ab;
+    font-weight: 500;
+    line-height: 50px;
+    font-size: 20px;
+    margin-right: 14px;
+}
+.btn_first_start, .btn_first_start:hover, .btn_first_start:focus, .btn_first_start:active {
+    border: 2px solid #0a91ab;
+    background-color: transparent;
+    color: #0a91ab;
+    padding: 10px 25px;
+    margin: 30px 0 0 62px;
+    display: none;
+}
+.non_active i {
+    display: block;
+    font-size: 40px;
+    margin-top: 126px;
+    color: #ddd;
+}
+.non_active p {
+    color: #ddd;
+}
+.non_active, .list_active {
+    background-color: #fdfdfd;
+}
