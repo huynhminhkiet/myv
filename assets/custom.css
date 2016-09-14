@@ -80,6 +80,8 @@ hr {
     width: 25px;
     height: 25px;
     vertical-align: top;
+    margin-left: 10px;
+    margin-top: 1px;
 }
 .msgTxt {
     border: 1px solid #fff;
@@ -419,4 +421,66 @@ input.search_input {
 }
 .non_active, .list_active {
     background-color: #fdfdfd;
+}
+.btn_chall, .btn_chall:focus{
+    background-color: transparent;
+    border: 1px solid #0a91ab;
+    padding: 2px 10px;
+    vertical-align: top;
+    border-radius: 15px;
+    color: #0a91ab;
+    margin-top: 1px;
+}
+.btn_chall:hover, .btn_chall:active, .chall_choose a:hover, .chall_choose a:active {
+    background-color: #0a91ab;
+    color: #fff;
+}
+.chall_choose a, .chall_choose a:focus {
+    border: 1px solid;
+    width: 100px;
+    height: 100px;
+    display: inline-block;
+    text-align: center;
+    line-height: 100px;
+    border-radius: 50%;
+    font-size: 16px;
+    margin: 0 15px;
+} 
+.chall_choose {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.voc_chall_content {
+    width: 600px;
+    height: 400px;
+    margin: 124px 0 0 10%;
+    display: block;
+    overflow: auto;
+    /*background-color: #eee;*/
+}
+.tn_answer_choose a {
+    display: block;
+    width: 100%;
+    padding: 12px 12px;
+    font-size: 16px;
+    margin: 2px 0;
+}
+.answer_title {
+    border: 1px solid;
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    text-align: center;
+    line-height: 30px;
+    border-radius: 50%;
+    font-size: 16px;
+    margin-right: 10px;
+}
+.chall_part {
+    width: 600px;
+    display: inline-block;
+}
+.chall_inner {
+    width: 2000000px;
 }

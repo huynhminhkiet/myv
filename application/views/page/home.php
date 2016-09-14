@@ -25,7 +25,7 @@
 					<div class="list menu_list">
 						<a href="#"><i class="fa fa-mobile" aria-hidden="true"></i> Ứng dụng</a>
 						<a href="#"><i class="fa fa-commenting-o" aria-hidden="true"></i> Phản hồi</a>
-						<a href="home/logout"><i class="fa fa-sign-out" aria-hidden="true"></i> minhkiet94 (Đăng xuất)</a>
+						<a href="<?php echo site_url(); ?>/home/logout"><i class="fa fa-sign-out" aria-hidden="true"></i> minhkiet94 (Đăng xuất)</a>
 					</div>
 				</div>
 			</div>
@@ -39,8 +39,9 @@
 							<a class="a_delete_topic" data-toggle="modal" data-target="#modal_delete_topic"><i class="fa fa-trash" aria-hidden="true"></i></a>
 							<a class="a_is_share" value="true"><i class="fa fa-share-alt-square" aria-hidden="true"></i></a>
 							<a><small class="sm_topic_id">[Mã: 101]</small></a>
-							<div class="loading voc_loading"></div>
 						</span>
+						<button class="btn btn_chall" data-toggle="modal" data-target="#modal_choose_chall">Ôn tập</button>
+						<div class="loading voc_loading"></div>
 					</p>
 
 				</div>
@@ -78,6 +79,42 @@
 				<div class="wel_b wel_b2"><b>2</b>Quản lý từ vựng</div>
 				<div class="wel_b wel_b3"><b>3</b>Luyện tập</div>
 				<button class="btn btn_first_start" data-toggle="modal" data-target="#modal_add_topic">Bắt đầu <i class="fa fa-chevron-circle-right" aria-hidden="true"></i></button>
+			</div>
+
+			<div class="voc_chall" style="display: none">
+				<div class="voc_chall_content">
+					<div class="chall_inner">
+						<div class="chall_part">
+							<h2 style="padding-left: 12px;">Hello</h2>
+							<hr>
+							<div class="tn_answer_choose">
+								<a><b class="answer_title">A</b>Xin chao</a>
+								<a><b class="answer_title">B</b>Xin chao</a>
+								<a><b class="answer_title">C</b>Xin chao</a>
+							</div>
+						</div>
+
+						<div class="chall_part">
+							<h2>Hello</h2>
+							<hr>
+							<div class="tn_answer_choose">
+								<a><b class="answer_title">A</b>Xin chao</a>
+								<a><b class="answer_title">B</b>Xin chao</a>
+								<a><b class="answer_title">C</b>Xin chao</a>
+							</div>
+						</div>
+
+						<div class="chall_part">
+							<h2>Hello</h2>
+							<hr>
+							<div class="tn_answer_choose">
+								<a><b class="answer_title">A</b>Xin chao</a>
+								<a><b class="answer_title">B</b>Xin chao</a>
+								<a><b class="answer_title">C</b>Xin chao</a>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 
@@ -138,6 +175,26 @@
 	    </div>
   	</div>
 </div>
+<div id="modal_choose_chall" class="modal fade" role="dialog">
+  	<div class="modal-dialog">
+	    <div class="modal-content">
+	      	<div class="modal-header">
+	        	<button type="button" class="close" data-dismiss="modal">&times;</button>
+	        	<h4 class="modal-title">Chọn bài tập</h4>
+	      	</div>
+	    	<div class="modal-body text-center">
+	    		  <div class="chall_choose">
+					<a class="tn_voc">Trắc nghiệm</a>
+					<a class="vt_chall">Viết từ</a>
+				</div>
+	    	</div>
+	    </div>
+  	</div>
+</div>
+<script type="text/javascript">
+	var siteUrl = "<?php echo site_url(); ?>";
+	console.log(siteUrl);
+</script>
 
 <script src='<?php echo base_url(); ?>assets/var.js' type='text/javascript'></script>
 <script src='<?php echo base_url(); ?>assets/func.js' type='text/javascript'></script>

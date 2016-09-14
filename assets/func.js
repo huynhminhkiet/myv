@@ -3,7 +3,7 @@ function translate(keyword) {
 	$(".vi_voc").hide();
 	if (keyword.trim() != "") {
 		$.ajax({
-	        url: 'home/translate',
+	        url: siteUrl + '/home/translate',
 	        method: 'POST',
 	        data: {
 	            keyword: keyword
@@ -72,7 +72,7 @@ function addVoc() {
 	if(validateFormTrans()) {
 		$(".voc_loading").css("display", "inline-block");
 		$.ajax({
-	        url: 'home/addVoc',
+	        url: siteUrl + '/home/addVoc',
 	        method: 'POST',
 	        data: {
 	        	topicId: currentTopic["topic_id"],
@@ -145,7 +145,7 @@ function showHideElem(value, elem) {
 
 function getTopicList() {
 	$.ajax({
-        url: 'home/getTopicList',
+        url: siteUrl + '/home/getTopicList',
         method: 'POST',
         dataType: 'json'
     }).done(function(data) {
@@ -172,7 +172,7 @@ function setTopicShare() {
 	}
 	var isShare = $(".a_is_share").attr("value");
 	$.ajax({
-        url: 'home/updateTopic',
+        url: siteUrl + '/home/updateTopic',
         method: 'POST',
         data: {
         	topicName: currentTopic["topic_name"],
@@ -202,7 +202,7 @@ function addTopic() {
 	$("#modal_add_topic").modal("hide");
 	var topicName = $("#form_add_topic input[name=i_add_topic]").val();
 	$.ajax({
-        url: 'home/addTopic',
+        url: siteUrl + '/home/addTopic',
         method: 'POST',
         data: {
         	topicName: topicName,
@@ -241,7 +241,7 @@ function updateTopic() {
 	var topicId = currentTopic["topic_id"];
 
 	$.ajax({
-        url: 'home/updateTopic',
+        url: siteUrl + '/home/updateTopic',
         method: 'POST',
         data: {
         	topicName: topicName,
@@ -266,6 +266,9 @@ function focusTopic(elemClicked) {
 	setTopicActive(currentTopic);
 	updateToolbar();
 	getVocList(currentTopic["topic_id"]);
+	$(".voc_chall").fadeOut(200, function() {
+		$(".main_content").fadeIn(200);
+	});
 }
 
 function updateToolbar() {
@@ -278,7 +281,7 @@ function deleteTopic() {
 	$("#modal_delete_topic").modal("hide");
 	showHideElem(true, $(".topic_loading"));
 	$.ajax({
-        url: 'home/deleteTopic',
+        url: siteUrl + '/home/deleteTopic',
         method: 'POST',
         data: {
         	topicId: currentTopic["topic_id"]
@@ -289,10 +292,11 @@ function deleteTopic() {
     	currentTopic = data["currentTopic"];
 
         renderTopicList(topicList);
-        if (currentTopic != null)
+        if (currentTopic != null) {
         	setTopicActive(currentTopic);
-        if (currentTopic != null)
         	updateToolbar();
+        	getVocList(currentTopic["topic_id"]);
+        }
         showHideElem(false, $(".topic_loading"));
     }).fail(function(err) {
     });
@@ -346,7 +350,7 @@ function renderVocList(vocList) {
 function getVocList(topicId) {
 	$(".voc_loading").css("display", "inline-block");
 	$.ajax({
-        url: 'home/getVocList',
+        url: siteUrl + '/home/getVocList',
         method: 'POST',
         data: {
         	topicId: topicId
@@ -363,7 +367,7 @@ function getVocList(topicId) {
 function deleteVoc(vocElem) {
 	$(".voc_loading").css("display", "inline-block");
 	$.ajax({
-        url: 'home/deleteVoc',
+        url: siteUrl + '/home/deleteVoc',
         method: 'POST',
         data: {
         	vocId: vocElem.attr("voc_id")
@@ -380,4 +384,60 @@ function deleteVoc(vocElem) {
  		$(".voc_loading").css("display", "none");
     }).fail(function(err) {
     });
+}
+
+
+function prepareChall(c) {
+	$("#modal_choose_chall").modal("hide");
+	$(".main_content").fadeOut(200, function() {
+		$(".voc_chall").fadeIn(200, function() {
+			if (c == "tn") {
+				prepareChallTn();
+			} else if (c = "vt") {
+				prepareChallVt();
+			}
+		});
+	});
+	
+}
+
+function prepareChallTn() {
+	var challArr = vocList.slice();
+	shuffle(challArr);
+
+	renderChallTn(challArr);
+}
+
+function renderChallTn(challArr) {
+	
+	answerChooseArr[0] = challArr[0];
+
+	console.log();  
+}
+
+function prepareAnswerChose(questionObj) {
+	var answerChooseArr = [];
+	answerChooseArr[0] = questionObj;
+	do {
+		var i = Math.floor(Math.random() * vocList.length);
+		answerChooseArr[1] = vocList[i];
+		i = Math.floor(Math.random() * vobList.length);
+		answerChooseArr[2] = vocList[i];
+	} while (!checkVaildAnswerArr(answerChooseArr));
+}
+
+function shuffle(a) {
+    var j, x, i;
+    for (i = a.length; i; i--) {
+        j = Math.floor(Math.random() * i);
+        x = a[i - 1];
+        a[i - 1] = a[j];
+        a[j] = x;
+    }
+}
+
+function checkVaildAnswerArr(answersArr) {
+	if (answersArr[0]["vocabulary_id"] == answersArr[1]["vocabulary_id"] || answersArr[0]["vocabulary_id"] == answersArr[2]["vocabulary_id"] || answersArr[1]["vocabulary_id"] == answersArr[2]["vocabulary_id"])
+		return false;
+	return true;
 }

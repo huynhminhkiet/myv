@@ -91,4 +91,8 @@ $(document).ready(function() {
 	$(".voc_list").on("click", ".del_voc", function() {
 		deleteVoc($(this));
 	});
+
+	$(".tn_voc").click(function() {
+		prepareChall("tn");
+	});
 });
