@@ -95,4 +95,8 @@ $(document).ready(function() {
 	$(".tn_voc").click(function() {
 		prepareChall("tn");
 	});
+
+	$(".tn_chall .tn_answer_choose a").click(function() {
+		answer($(this));
+	});
 });

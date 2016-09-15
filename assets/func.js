@@ -444,6 +444,7 @@ function showTnData(currentQuestion, callback) {
 	$(".tn_answer_choose").attr("value", answersArr[0]["vocabulary_id"]);
 
 	shuffle(answersArr);
+
 	$(".a_answer p").text(answersArr[0]["mean"])
 	$(".a_answer").attr("value", answersArr[0]["vocabulary_id"])
 	$(".b_answer p").text(answersArr[1]["mean"])
@@ -451,8 +452,45 @@ function showTnData(currentQuestion, callback) {
 	$(".c_answer p").text(answersArr[2]["mean"])
 	$(".c_answer").attr("value", answersArr[2]["vocabulary_id"])
 
+	$(".tn_answer_choose a").css("border-color", "#fff");
+
 	callback();
 }
 
-function prepareTnQuestion(question) {	
+function answer(elemClicked) {
+	if (checkAnswer(elemClicked)) {
+		correctAnswer(elemClicked);
+	} else {
+		incorrectAnswer(elemClicked);
+	}
+	setTimeout(function() {
+  		nextTnQuestion();
+	}, 800);
+	
 }
+
+function checkAnswer(elemAnswer) {
+	return (elemAnswer.parent(".tn_answer_choose").attr("value") == elemAnswer.attr("value"));
+}
+
+function correctAnswer(elemAnswer) {
+	console.log("true");
+	elemAnswer.css("border-color", "#bbea98");
+}
+
+function incorrectAnswer(elemAnswer) {
+	console.log("false");
+	elemAnswer.css("border-color", "#fbb9b9");
+	elemAnswer.parent().find("a[value="+ challArr[currentQuestionIndex]["vocabulary_id"] +"]").css("border-color", "#bbea98");
+}
+
+function nextTnQuestion() {
+	currentQuestionIndex++;
+	var currentQuestion = challArr[currentQuestionIndex];
+	$(".tn_chall").hide(function() {
+		showTnData(currentQuestion, function() {
+			$(".tn_chall").fadeIn(200);
+		});
+	});
+}
+

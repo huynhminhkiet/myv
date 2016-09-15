@@ -465,6 +465,8 @@ input.search_input {
     padding: 12px 12px;
     font-size: 16px;
     margin: 2px 0;
+    border: 1px solid #fff;
+    border-radius: 10px;
 }
 .tn_answer_choose a p {
     display: inline-block;
@@ -492,4 +494,14 @@ input.search_input {
     float: right;
     font-size: 20px;
     margin-top: 27px;
+}
+
+.tn_correct_answer {
+    border: 1px solid #bbea98;
+    border-radius: 10px;
+}
+
+.tn_incorrect_answer {
+    border: 1px solid #fbb9b9;
+    border-radius: 10px;
 }
