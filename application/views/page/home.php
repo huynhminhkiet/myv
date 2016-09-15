@@ -84,33 +84,15 @@
 			<div class="voc_chall" style="display: none">
 				<div class="voc_chall_content">
 					<div class="chall_inner">
-						<div class="chall_part">
-							<h2 style="padding-left: 12px;">Hello</h2>
+						<div class="chall_part tn_chall" style="display: none">
+							<h2 class="question" value=""></h2>
+							<div class="stt_q">1/12</div>
+							<div class="clearfix"></div>
 							<hr>
-							<div class="tn_answer_choose">
-								<a><b class="answer_title">A</b>Xin chao</a>
-								<a><b class="answer_title">B</b>Xin chao</a>
-								<a><b class="answer_title">C</b>Xin chao</a>
-							</div>
-						</div>
-
-						<div class="chall_part">
-							<h2>Hello</h2>
-							<hr>
-							<div class="tn_answer_choose">
-								<a><b class="answer_title">A</b>Xin chao</a>
-								<a><b class="answer_title">B</b>Xin chao</a>
-								<a><b class="answer_title">C</b>Xin chao</a>
-							</div>
-						</div>
-
-						<div class="chall_part">
-							<h2>Hello</h2>
-							<hr>
-							<div class="tn_answer_choose">
-								<a><b class="answer_title">A</b>Xin chao</a>
-								<a><b class="answer_title">B</b>Xin chao</a>
-								<a><b class="answer_title">C</b>Xin chao</a>
+							<div class="tn_answer_choose" value="">
+								<a class="a_answer" value=""><b class="answer_title">A</b><p></p></a>
+								<a class="b_answer" value=""><b class="answer_title">B</b><p></p></a>
+								<a class="c_answer" value=""><b class="answer_title">C</b><p></p></a>
 							</div>
 						</div>
 					</div>

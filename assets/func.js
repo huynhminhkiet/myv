@@ -390,29 +390,14 @@ function deleteVoc(vocElem) {
 function prepareChall(c) {
 	$("#modal_choose_chall").modal("hide");
 	$(".main_content").fadeOut(200, function() {
-		$(".voc_chall").fadeIn(200, function() {
-			if (c == "tn") {
-				prepareChallTn();
-			} else if (c = "vt") {
-				prepareChallVt();
-			}
-		});
+		$(".voc_chall").show();
+		if (c == "tn") {
+			setupTnChall();
+		} else if (c = "vt") {
+			prepareChallVt();
+		}
 	});
 	
-}
-
-function prepareChallTn() {
-	var challArr = vocList.slice();
-	shuffle(challArr);
-
-	renderChallTn(challArr);
-}
-
-function renderChallTn(challArr) {
-	
-	answerChooseArr[0] = challArr[0];
-
-	console.log();  
 }
 
 function prepareAnswerChose(questionObj) {
@@ -421,9 +406,10 @@ function prepareAnswerChose(questionObj) {
 	do {
 		var i = Math.floor(Math.random() * vocList.length);
 		answerChooseArr[1] = vocList[i];
-		i = Math.floor(Math.random() * vobList.length);
+		i = Math.floor(Math.random() * vocList.length);
 		answerChooseArr[2] = vocList[i];
 	} while (!checkVaildAnswerArr(answerChooseArr));
+	return answerChooseArr;
 }
 
 function shuffle(a) {
@@ -440,4 +426,33 @@ function checkVaildAnswerArr(answersArr) {
 	if (answersArr[0]["vocabulary_id"] == answersArr[1]["vocabulary_id"] || answersArr[0]["vocabulary_id"] == answersArr[2]["vocabulary_id"] || answersArr[1]["vocabulary_id"] == answersArr[2]["vocabulary_id"])
 		return false;
 	return true;
+}
+
+function setupTnChall() {
+	currentQuestionIndex = 0;
+	challArr = vocList.slice();
+	shuffle(challArr);
+	var currentQuestion = challArr[currentQuestionIndex];
+	showTnData(currentQuestion, function() {
+		$(".tn_chall").fadeIn(200);
+	});
+}
+
+function showTnData(currentQuestion, callback) {
+	var answersArr = prepareAnswerChose(currentQuestion);
+	$(".question").text(answersArr[0]["voc_new"]);
+	$(".tn_answer_choose").attr("value", answersArr[0]["vocabulary_id"]);
+
+	shuffle(answersArr);
+	$(".a_answer p").text(answersArr[0]["mean"])
+	$(".a_answer").attr("value", answersArr[0]["vocabulary_id"])
+	$(".b_answer p").text(answersArr[1]["mean"])
+	$(".b_answer").attr("value", answersArr[1]["vocabulary_id"])
+	$(".c_answer p").text(answersArr[2]["mean"])
+	$(".c_answer").attr("value", answersArr[2]["vocabulary_id"])
+
+	callback();
+}
+
+function prepareTnQuestion(question) {	
 }

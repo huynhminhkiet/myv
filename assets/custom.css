@@ -466,6 +466,9 @@ input.search_input {
     font-size: 16px;
     margin: 2px 0;
 }
+.tn_answer_choose a p {
+    display: inline-block;
+}
 .answer_title {
     border: 1px solid;
     width: 30px;
@@ -478,9 +481,15 @@ input.search_input {
     margin-right: 10px;
 }
 .chall_part {
-    width: 600px;
-    display: inline-block;
+    width: 100%;
 }
-.chall_inner {
-    width: 2000000px;
+.question {
+    padding-left: 12px;
+    display: inline-block;
+    float: left;
+}
+.stt_q {
+    float: right;
+    font-size: 20px;
+    margin-top: 27px;
 }
