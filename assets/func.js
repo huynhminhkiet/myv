@@ -331,6 +331,8 @@ function resize() {
 function firstResize() {
 	var listHeight = ($(window).height() - 290) + "px";
 	$(".topic_list").css("min-height", listHeight);
+	$(".eng_voc").css("width", $(".eng_key").width());
+	console.log($(".eng_key").width());
 }
 
 function renderVocList(vocList) {
@@ -394,7 +396,7 @@ function prepareChall(c) {
 		if (c == "tn") {
 			setupTnChall();
 		} else if (c = "vt") {
-			prepareChallVt();
+			setupVtChall();
 		}
 	});
 	
@@ -428,19 +430,27 @@ function checkVaildAnswerArr(answersArr) {
 	return true;
 }
 
-function setupTnChall() {
+function resetChall() {
 	currentQuestionIndex = 0;
+	numCorrectAnswer = 0;
 	challArr = vocList.slice();
 	shuffle(challArr);
+	$(".chall_part").hide();
+}
+
+function setupTnChall() {
+	resetChall();
 	var currentQuestion = challArr[currentQuestionIndex];
 	showTnData(currentQuestion, function() {
 		$(".tn_chall").fadeIn(200);
 	});
+	enableAnswerChooser();
+	$(".chall_result").hide();
 }
 
 function showTnData(currentQuestion, callback) {
 	var answersArr = prepareAnswerChose(currentQuestion);
-	$(".question").text(answersArr[0]["voc_new"]);
+	$(".question").html(answersArr[0]["voc_new"] + ' <small><i>'+ answersArr[0]["pron"] +'</i></small>');
 	$(".tn_answer_choose").attr("value", answersArr[0]["vocabulary_id"]);
 
 	shuffle(answersArr);
@@ -463,8 +473,13 @@ function answer(elemClicked) {
 	} else {
 		incorrectAnswer(elemClicked);
 	}
+	disableAnswerChooser();
 	setTimeout(function() {
-  		nextTnQuestion();
+		if (currentQuestionIndex < challArr.length - 1)
+  			nextTnQuestion();
+  		else {
+  			showTnChallResult();
+  		}
 	}, 800);
 	
 }
@@ -474,12 +489,11 @@ function checkAnswer(elemAnswer) {
 }
 
 function correctAnswer(elemAnswer) {
-	console.log("true");
 	elemAnswer.css("border-color", "#bbea98");
+	numCorrectAnswer++;
 }
 
 function incorrectAnswer(elemAnswer) {
-	console.log("false");
 	elemAnswer.css("border-color", "#fbb9b9");
 	elemAnswer.parent().find("a[value="+ challArr[currentQuestionIndex]["vocabulary_id"] +"]").css("border-color", "#bbea98");
 }
@@ -489,8 +503,104 @@ function nextTnQuestion() {
 	var currentQuestion = challArr[currentQuestionIndex];
 	$(".tn_chall").hide(function() {
 		showTnData(currentQuestion, function() {
+			enableAnswerChooser();
 			$(".tn_chall").fadeIn(200);
 		});
+	});
+}
+
+function showTnChallResult() {
+	$(".tn_chall").hide(function() {
+		challStatistics();
+		$(".chall_result").fadeIn(200);
+	});
+}
+
+function disableAnswerChooser() {
+	$(".tn_chall .tn_answer_choose a").addClass("unclick");
+}
+
+function enableAnswerChooser() {
+	$(".tn_chall .tn_answer_choose a").removeClass("unclick");
+}
+
+function challStatistics() {
+	$(".chall_result p").text(numCorrectAnswer + " / " + challArr.length);
+}
+
+function setupVtChall() {
+	resetChall();
+	var currentQuestion = challArr[currentQuestionIndex];	
+	showVtData(currentQuestion, function() {
+		$(".vt_chall").fadeIn(200);
+	});
+	enableAnswerChooser();
+	$(".chall_result").hide();
+}
+
+function showVtData(currentQuestion, callback) {
+	$(".vt_answer").val("");
+	$(".vt_answer").css("border-color", "unset !important");
+	var answersArr = prepareAnswerChose(currentQuestion);
+	$(".question").html(answersArr[0]["mean"]);
+	$(".vt_chall .question").attr("value", answersArr[0]["voc_new"]);
+
+	shuffle(answersArr);
+
+	callback();
+}
+
+function answerVt() {
+	if (checkVtAnswer()) {
+		correctVtAnswer();
+		vtQuestionAfter();
+	} else {
+		incorrectVtAnswer();
+	}
+	
+}
+
+function vtQuestionAfter() {
+	console.log(currentQuestionIndex);
+	setTimeout(function() {
+		if (currentQuestionIndex < challArr.length - 1)
+  			nextVtQuestion();
+  		else {
+  			showVtChallResult();
+  		}
+	}, 800);
+}
+
+function checkVtAnswer() {
+	return ($(".vt_chall .question").attr("value") == $(".vt_answer").val());
+}
+
+function correctVtAnswer() {
+	$(".vt_answer_field").css("border-color", "#77f177");
+	numCorrectAnswer++;
+}
+
+function incorrectVtAnswer() {
+	console.log("false");
+	$(".vt_answer_field").css("border-color", "red");
+}
+
+function nextVtQuestion() {
+	$(".vt_answer_field").css("border-color", "transparent");
+	currentQuestionIndex++;
+	var currentQuestion = challArr[currentQuestionIndex];
+	$(".vt_chall").hide(function() {
+		showVtData(currentQuestion, function() {
+			$(".vt_chall").fadeIn(200);
+		});
+	});
+
+}
+
+function showVtChallResult() {
+	$(".vt_chall").hide(function() {
+		challStatistics();
+		$(".chall_result").fadeIn(200);
 	});
 }
 

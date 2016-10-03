@@ -6,3 +6,4 @@ var vocList = [];
 // chall
 var currentQuestionIndex = 0;
 var challArr = [];
+var numCorrectAnswer = 0;

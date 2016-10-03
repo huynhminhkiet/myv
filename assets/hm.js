@@ -96,7 +96,22 @@ $(document).ready(function() {
 		prepareChall("tn");
 	});
 
+	$(".vt_voc").click(function() {
+		prepareChall("vt");
+	});
+
 	$(".tn_chall .tn_answer_choose a").click(function() {
 		answer($(this));
 	});
+
+	$("#form_vt_chall").validate({
+			submitHandler: function(form) {
+            	answerVt();
+        	}
+	});
+
+	$(".btn_vt_skip_answer").click(function() {
+		vtQuestionAfter();
+	});
+
 });

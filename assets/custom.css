@@ -505,3 +505,51 @@ input.search_input {
     border: 1px solid #fbb9b9;
     border-radius: 10px;
 }
+
+.unclick {
+    pointer-events: none;
+    cursor: default;
+}
+
+.vt_answer {
+    font-size: 16px;
+    font-size: 30px;
+    width: 100%;
+    height: 100% !important;
+}
+
+.vt_answer:focus {
+    box-shadow: none;
+    outline: none;
+    border-color: #ccc !important;
+}
+
+.btn_vt_answer {
+    color: #fff;
+    background-color: #399e27;
+}
+
+.btn_vt_skip_answer {
+    color: #fff;
+    background-color: #dcaf74;
+}
+
+.vt_answer_field {
+    width: 400px;
+    height: 50px;
+    border: 1px solid transparent;
+    margin: 35px auto;
+    display: block;
+    border-radius: 3px;
+}
+
+.input_border_yellow {
+    border-color: #ffb8a8!important;
+}
+
+.input_border_green {
+    border-color: #32e632!important;
+}
+.input_border_normal {
+    border-color: #ccc !important;
+}

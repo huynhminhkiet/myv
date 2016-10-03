@@ -95,6 +95,29 @@
 								<a class="c_answer" value=""><b class="answer_title">C</b><p></p></a>
 							</div>
 						</div>
+						<div class="chall_part vt_chall" style="display: none">
+							<h3 class="question" value=""></h3>
+							<div class="stt_q">1/12</div>
+							<div class="clearfix"></div>
+							<hr>
+							<form id="form_vt_chall" class="text-center" method="post">
+								<div class="vt_answer_field">
+									<input type="text" name="vt_answer" class="form-control  vt_answer">
+								</div>
+								<button type="submit" class="btn btn_vt_answer">Trả lời</button>
+								<button type="submit" class="btn btn_vt_skip_answer">Bỏ qua</button>
+							</form>
+
+						</div>
+						<div class="chall_result" style="display:none">
+							<h2>Kết thúc</h2>
+							<hr>
+							<br>
+							<p></p>
+							<button class="challReplay">Luyện tập lại</button>
+							<button class="back">Trở về</button>
+						</div>
+
 					</div>
 				</div>
 			</div>
@@ -167,7 +190,7 @@
 	    	<div class="modal-body text-center">
 	    		  <div class="chall_choose">
 					<a class="tn_voc">Trắc nghiệm</a>
-					<a class="vt_chall">Viết từ</a>
+					<a class="vt_voc">Viết từ</a>
 				</div>
 	    	</div>
 	    </div>
