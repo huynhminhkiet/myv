@@ -25,7 +25,7 @@
 					<div class="list menu_list">
 						<a href="#"><i class="fa fa-mobile" aria-hidden="true"></i> Ứng dụng</a>
 						<a href="#"><i class="fa fa-commenting-o" aria-hidden="true"></i> Phản hồi</a>
-						<a href="<?php echo site_url(); ?>/home/logout"><i class="fa fa-sign-out" aria-hidden="true"></i> minhkiet94 (Đăng xuất)</a>
+						<a href="<?php echo site_url(); ?>/home/logout"><i class="fa fa-sign-out" aria-hidden="true"></i> <?php echo $userLoggedIn["username"]; ?> (Đăng xuất)</a>
 					</div>
 				</div>
 			</div>
@@ -56,11 +56,13 @@
 						<div class="col-sm-1 input_trans"><button class="btn btn_default btn_add_voc">Lưu</button></div>
 					</div>
 					<div class="row word_result" style="margin-top: 5px;">
-						<div class="col-sm-3 eng_voc">
-						
+						<div class="col-sm-3" style="padding: 0;margin-left: 4px;">
+							<div class="eng_voc">
+								
+							</div>
 						</div>
-						<div class="col-sm-8 vi_voc">
-							
+						<div class="col-sm-8" style="padding: 0;margin-left: 4px;">
+							<div class="vi_voc"></div>
 						</div>
 					</div>
 				</div>
@@ -102,7 +104,7 @@
 							<hr>
 							<form id="form_vt_chall" class="text-center" method="post">
 								<div class="vt_answer_field">
-									<input type="text" name="vt_answer" class="form-control  vt_answer">
+									<input type="text" name="vt_answer" class="form-control  vt_answer" autocomplete="off">
 								</div>
 								<button type="submit" class="btn btn_vt_answer">Trả lời</button>
 								<button type="submit" class="btn btn_vt_skip_answer">Bỏ qua</button>
@@ -188,9 +190,12 @@
 	        	<h4 class="modal-title">Chọn bài tập</h4>
 	      	</div>
 	    	<div class="modal-body text-center">
-	    		  <div class="chall_choose">
+	    		<div class="chall_choose" style="display:none">
 					<a class="tn_voc">Trắc nghiệm</a>
 					<a class="vt_voc">Viết từ</a>
+				</div>
+				<div class="chall_note" style="display:none">
+					<p>Bạn phải có ít nhất 5 từ vựng trong chủ đề này!</p>
 				</div>
 	    	</div>
 	    </div>

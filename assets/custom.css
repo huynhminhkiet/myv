@@ -305,7 +305,7 @@ input.search_input {
     width: 100%;
 }
 .eng_voc {
-    width: 275px;
+    padding: 5px;
     border: 1px solid #eee;
     background-color: #fff;
     -webkit-box-shadow: -4px 5px 11px -4px rgba(0,0,0,0.75);
@@ -314,7 +314,7 @@ input.search_input {
     display: none;
 }
 .vi_voc {
-    width: 729px;
+    padding: 0 5px;
     border: 1px solid #eee;
     background-color: #fff;
     margin-left: 2px;
@@ -332,11 +332,12 @@ input.search_input {
 .vi_voc > i {
     display: block;
     background-color: #eee;
-    margin: 0 -15px;
     padding: 5px 15px;
+    margin: 0 -5px;
 }
 .vi_voc ul li b > i {
-    font-style: normal !important;
+    font-style: normal;
+    font-weight: 600;
 }
 .vi_voc ul ul {
     padding-left: 20px! important;

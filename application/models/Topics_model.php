@@ -10,9 +10,8 @@ class Topics_model extends Main_model {
 	}
 
 	public function getTopicByUser($user_id) {
-		$this->db->where('user_id', $user_id);
-		$this->db->order_by("topic_id", "desc");
-		$query = $this->db->get($this->table);
+		$SQL = 'SELECT topic_tbl.*, (SELECT COUNT(*) from vocabulary_tbl WHERE vocabulary_tbl.topic_id = topic_tbl.topic_id) as total FROM `topic_tbl` WHERE user_id = '.$user_id.' ORDER BY topic_tbl.topic_id DESC';
+		$query = $this->db->query($SQL);
 		return $query->result_array();
 	}
 }

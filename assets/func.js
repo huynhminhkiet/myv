@@ -86,6 +86,7 @@ function addVoc() {
 	    }).done(function(data) {
 	    	var vocAdded = data["newVoc"];
 	    	vocList.unshift(vocAdded);
+	    	setTotalVocOfTopic(currentTopic["topic_id"], "add");
 	    	renderVocList(vocList);
 	 		$(".voc_loading").css("display", "none");
 	    }).fail(function(err) {
@@ -122,7 +123,7 @@ function renderTopicList(topicList) {
 		$(".non_active").hide();
 		var html = '';
 		for (var i in topicList) {
-			html += '<a i="'+ i +'" index="'+ topicList[i]["topic_id"] +'">'+ topicList[i]["topic_name"] +' <span class="badge">5</span></a>';
+			html += '<a i="'+ i +'" index="'+ topicList[i]["topic_id"] +'">'+ topicList[i]["topic_name"] +' <span class="badge">'+ topicList[i]["total"] + '</span></a>';
 		}
 		$(".list_active").empty();
 		$(".list_active").html(html);
@@ -331,8 +332,6 @@ function resize() {
 function firstResize() {
 	var listHeight = ($(window).height() - 290) + "px";
 	$(".topic_list").css("min-height", listHeight);
-	$(".eng_voc").css("width", $(".eng_key").width());
-	console.log($(".eng_key").width());
 }
 
 function renderVocList(vocList) {
@@ -382,6 +381,7 @@ function deleteVoc(vocElem) {
 			    vocList.splice(index, 1);
 			}
     	}
+    	setTotalVocOfTopic(currentTopic["topic_id"], "remove");
     	renderVocList(vocList);
  		$(".voc_loading").css("display", "none");
     }).fail(function(err) {
@@ -604,3 +604,12 @@ function showVtChallResult() {
 	});
 }
 
+function setTotalVocOfTopic(index, action) {
+	var currentCount = Number($('a[index="' + index +'"] span').text());
+	if (action == "add") {
+		currentCount ++;
+	} else if (action == "remove") {
+		currentCount--;
+	}
+	$('a[index="' + index +'"] span').text(currentCount);
+}

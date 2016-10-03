@@ -25,7 +25,7 @@ class Home extends CI_Controller {
 		} else {
 			$data["userLoggedIn"] = $userLoggedIn;
 			$this->load->view('templates/header');
-			$this->load->view("page/home");
+			$this->load->view("page/home", $data);
 	        $this->load->view('templates/footer');	
 		}
 		

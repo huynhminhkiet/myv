@@ -2,8 +2,16 @@ $(document).ready(function() {
 	firstLoading();
 	firstResize();
 
-	$(".eng_key").on("keyup", function() {
-		translate($(this).val());
+	var typingTimer;
+	var doneTypingInterval = 400;  
+	$(".eng_key").keyup(function(){
+	    clearTimeout(typingTimer);
+	    if ($(".eng_key").val) {
+	        typingTimer = setTimeout(function(){
+	             var v = $(".eng_key").val();
+	             translate(v);
+	        }, doneTypingInterval);
+	    }
 	});
 
 	$(".eng_voc").on("click", "a", function() {
@@ -112,6 +120,16 @@ $(document).ready(function() {
 
 	$(".btn_vt_skip_answer").click(function() {
 		vtQuestionAfter();
+	});
+
+	$(".btn_chall").click(function() {
+		if (vocList.length < 5 ) {
+			$(".chall_note").show();
+			$(".chall_choose").hide();
+		} else {
+			$(".chall_note").hide();
+			$(".chall_choose").show();
+		}
 	});
 
 });
